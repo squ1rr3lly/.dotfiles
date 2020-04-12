@@ -17,5 +17,8 @@
     ~/bin:
         path: bin/
         create: true
+    ~/.dotfiles-local:
+        path: dotfiles-local/
+        create: true
 
 
