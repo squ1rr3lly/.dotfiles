@@ -1,0 +1,21 @@
+- clean: ['~']
+
+- link:
+    ~/.bash_profile: bash_profile
+    ~/.bashrc: bashrc
+    ~/.aliases: aliases
+    ~/.gitconfig: gitconfig
+    ~/.ssh/config:
+        path: ssh/config
+        create: true
+    ~/.tmux.conf: tmux.conf
+    ~/.vimrc: vimrc
+    ~/.zsh:
+        path: zsh/
+        create: true
+    ~/.zshrc: zshrc
+    ~/bin:
+        path: bin/
+        create: true
+
+
