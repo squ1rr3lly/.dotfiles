@@ -1,3 +1,8 @@
+- defaults:
+    link:
+      create: true
+      relink: true
+
 - clean: ['~']
 
 - link:
@@ -7,18 +12,29 @@
     ~/.gitconfig: gitconfig
     ~/.ssh/config:
         path: ssh/config
-        create: true
-    ~/.tmux.conf: tmux.conf
-    ~/.vimrc: vimrc
+    ~/.tmux.conf: 
+        path: tmux.conf
+        force: true
+    ~/.vimrc: 
+        path: vimrc
+        force: true
     ~/.zsh:
         path: zsh/
-        create: true
-    ~/.zshrc: zshrc
+    ~/.zshrc: 
+        path: zshrc
+        force: true
     ~/bin:
         path: bin/
-        create: true
-    ~/.dotfiles-local:
-        path: dotfiles-local/
-        create: true
 
+- create:
 
+- shell:
+  - if [$SHELL != $(which zsh)]; then chsh -s $(which zsh); fi
+  - if [-e ~/.ssh/config.local]; then echo "\n\n### Local Config" >> ~/.ssh/config && cat ~/.ssh/config.local >> ~/.ssh/config; fi
+  - echo "\n\n## Updated " $(date -u) >> ~/.sysinfo
+  - echo $(hostname) >> ~/.sysinfo
+  - echo $(hostname) - $(date +%Y-%m-%d) >> ~/.dotfiles/systems
+  - echo $(sort -u ~/.dotfiles/systems) > ~/.dotfiles/systems
+  - git add ~/.dotfiles/systems
+  - git commit ~/.dotfiles/systems -m "Auto system file update"
+  - git push

@@ -1,5 +1,5 @@
 [push]
-  default = current
+  default = upstream
 [color]
   ui = auto
 [alias]
@@ -14,9 +14,8 @@
   excludesfile = ~/.gitignore
   autocrlf = input
 [merge]
-  ff = only
-[commit]
-  template = ~/.gitmessage
+  defaultToUpstream = true
+  tool = vimdiff
 [fetch]
   prune = true
 [rebase]

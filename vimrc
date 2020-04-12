@@ -18,8 +18,28 @@ set nomodeline
 set foldmethod=indent " Use indent level as fold level
 set mouse=a       " Enable mouse for scrolling and selecting tags (double-click)
 
-" Set color scheme
-colo zellner
+" vim can autodetect this based on $TERM (e.g. 'xterm-256color')
+" but it can be set to force 256 colors
+" set t_Co=256
+if has('gui_running')
+    colorscheme zellner
+    let g:lightline = {'colorscheme': 'zellner'}
+elseif &t_Co < 256
+    colorscheme default
+    set nocursorline " looks bad in this mode
+else
+    set background=dark
+    let g:zellner_termcolors=256 " instead of 16 color with mapping in terminal
+    colorscheme zellner
+    " customized colors
+    highlight SignColumn ctermbg=234
+    highlight StatusLine cterm=bold ctermfg=245 ctermbg=235
+    highlight StatusLineNC cterm=bold ctermfg=245 ctermbg=235
+    let g:lightline = {'colorscheme': 'dark'}
+    highlight SpellBad cterm=underline
+    " patches
+    highlight CursorLineNr cterm=NONE
+endif
 
 " Highlight current line in current Window
 augroup CursorLine
@@ -27,6 +47,15 @@ augroup CursorLine
     au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
     au WinLeave * setlocal nocursorline
 augroup END
+
+" show lines above and below cursor when possible
+set scrolloff=5
+
+" search highlight
+set hls
+
+" disable audible bell
+set noerrorbells visualbell t_vb=
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
@@ -44,7 +73,8 @@ endif
 "  runtime! macros/matchit.vim
 "endif
 
-filetype plugin indent on
+" enable file type detection
+"filetype plugin indent on
 
 augroup vimrcEx
   autocmd!
@@ -147,10 +177,6 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
-" Move between linting errors
-"nnoremap ]r :ALENextWrap<CR>
-"nnoremap [r :ALEPreviousWrap<CR>
-
 " Map Ctrl + p to open fuzzy find (FZF)
 nnoremap <c-p> :Files<cr>
 
@@ -161,8 +187,6 @@ set spellfile=$HOME/.vim-spell-en.utf-8.add
 " Autocomplete with dictionary words when spell check is on
 set complete+=kspell
 
-" Always use vertical diffs
-set diffopt+=vertical
 
 " Local config
 if filereadable($HOME . "/.vimrc.local")
