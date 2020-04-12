@@ -5,3 +5,39 @@ Host *.counterhackchallenges.com
 
 
 
+
+
+### Local Config
+Host coalfirelabs.com
+	IdentityFile ~/.ssh/cflabs.pem
+
+
+
+
+
+
+### Local Config
+Host coalfirelabs.com
+	IdentityFile ~/.ssh/cflabs.pem
+
+
+
+
+
+
+### Local Config
+Host coalfirelabs.com
+	IdentityFile ~/.ssh/cflabs.pem
+
+
+
+
+
+
+### Local Config
+Host coalfirelabs.com
+	IdentityFile ~/.ssh/cflabs.pem
+
+
+
+

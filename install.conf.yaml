@@ -30,7 +30,7 @@
 
 - shell:
   - if [$SHELL != $(which zsh)]; then chsh -s $(which zsh); fi
-  - if [-e ~/.ssh/config.local]; then echo "\n\n### Local Config" >> ~/.ssh/config && cat ~/.ssh/config.local >> ~/.ssh/config; fi
+  - if [ -f ~/.ssh/config.local ]; then echo "\n\n### Local Config" >> ~/.ssh/config && cat ~/.ssh/config.local >> ~/.ssh/config && awk '!seen[$0]++' ~/.ssh/config > ~/.ssh/config.tmp && mv ~/.ssh/config.tmp ~/.ssh/config; fi
   - echo "\n\n## Updated " $(date -u) >> ~/.sysinfo
   - echo $(hostname) >> ~/.sysinfo
   - echo $(hostname) - $(date +%Y-%m-%d) >> ~/.dotfiles/systems
