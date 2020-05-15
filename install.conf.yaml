@@ -33,8 +33,8 @@
   - if [ -f ~/.ssh/config.local ]; then echo "\n\n### Local Config" >> ~/.ssh/config && cat ~/.ssh/config.local >> ~/.ssh/config && awk '!seen[$0]++' ~/.ssh/config > ~/.ssh/config.tmp && mv ~/.ssh/config.tmp ~/.ssh/config; fi
   - echo "\n\n## Updated " $(date -u) >> ~/.sysinfo
   - echo $(hostname) >> ~/.sysinfo
-  - echo $(hostname) - $(date +%Y-%m-%d) >> ~/.dotfiles/systems
-  - awk '!seen[$0]++' systems > systems.tmp && mv systems.tmp systems
-  - git add ~/.dotfiles/systems
-  - git commit ~/.dotfiles/systems -m "Auto system file update"
-  - git push
+#  - echo $(hostname) - $(date +%Y-%m-%d) >> ~/.dotfiles/systems
+#  - awk '!seen[$0]++' systems > systems.tmp && mv systems.tmp systems
+#  - git add ~/.dotfiles/systems
+#  - git commit ~/.dotfiles/systems -m "Auto system file update"
+#  - git push
