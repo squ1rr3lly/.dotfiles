@@ -109,7 +109,7 @@ augroup vimrcEx
 augroup END
 
 " Highlight search matches (Not working, seems like known issue)
-"highlight Search ctermbg=Yellow ctermfg=DarkGrey
+highlight Search ctermbg=Yellow ctermfg=DarkGrey
 
 " When the type of shell script is /bin/sh, assume a POSIX-compatible
 " shell for syntax highlighting purposes.

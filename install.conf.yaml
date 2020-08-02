@@ -13,13 +13,22 @@
     ~/.ssh/config:
         path: ssh/config
     ~/.tmux.conf: 
-        path: tmux.conf
+        path: linux/tmux.conf
         force: true
+        if: '[`uname` = Linux]'
+    ~/.tmux.conf: 
+        path: macos/tmux.conf
+        force: true
+        if: '[`uname` = Darwin]'
     ~/.vimrc: 
         path: vimrc
         force: true
+    ~/.zsh: 
+        path: macos/zsh/
+        if: '[`uname` = Darwin]'
     ~/.zsh:
-        path: zsh/
+        path: linux/zsh/
+        if: '[`uname` = Linux]'
     ~/.zshrc: 
         path: zshrc
         force: true
@@ -33,8 +42,10 @@
   - if [ -f ~/.ssh/config.local ]; then echo "\n\n### Local Config" >> ~/.ssh/config && cat ~/.ssh/config.local >> ~/.ssh/config && awk '!seen[$0]++' ~/.ssh/config > ~/.ssh/config.tmp && mv ~/.ssh/config.tmp ~/.ssh/config; fi
   - echo "\n\n## Updated " $(date -u) >> ~/.sysinfo
   - echo $(hostname) >> ~/.sysinfo
+  - echo $(uname -a) >> ~/.sysinfo
+  - echo $(cat /etc/fstab) >> ~/.sysinfo
 #  - echo $(hostname) - $(date +%Y-%m-%d) >> ~/.dotfiles/systems
 #  - awk '!seen[$0]++' systems > systems.tmp && mv systems.tmp systems
 #  - git add ~/.dotfiles/systems
 #  - git commit ~/.dotfiles/systems -m "Auto system file update"
-#  - git push
+#  - git push\

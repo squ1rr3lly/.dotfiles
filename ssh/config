@@ -1,3 +1,2 @@
-Host *.counterhackchallenges.com
-	User squirrelly
-	IdentityFile ~/.ssh/netwars_L3_ssh_priv_key.priv
+host neowise
+  IdentityFile ~/.ssh/aws_squirrelly.pem

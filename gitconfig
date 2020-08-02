@@ -24,3 +24,6 @@
   path = ~/.gitconfig.local
 [diff]
   colorMoved = zebra
+[user]
+	email = github@squirrelly.anonaddy.com
+	name = squ1rr3lly
