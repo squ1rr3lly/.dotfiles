@@ -1,6 +1,6 @@
 # Functions
-if [ -f ~/.bash/.funcitons ]; then
-      source ~/.bash/.functions
+if [ -f ~/.bash/.functions ]; then
+      source ~/.bash/functions
 fi
 
 # Aliases
@@ -17,6 +17,6 @@ if [ -f ~/.shell_local_after ]; then
 fi
 
 # Allow local customizations in the ~/.bashrc.local
-if [ -f ~/.bashrc.local]; then
+if [ -f ~/.bashrc.local ]; then
       source ~/.bashrc.local
 fi

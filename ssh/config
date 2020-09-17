@@ -1,2 +1,0 @@
-host neowise
-  IdentityFile ~/.ssh/aws_squirrelly.pem
