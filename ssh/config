@@ -1,3 +1,11 @@
-Host *.counterhackchallenges.com
-	User squirrelly
-	IdentityFile ~/.ssh/netwars_L3_ssh_priv_key.priv
+Host coalfirelabs.com
+	IdentityFile ~/.ssh/cflabs.key
+
+Host 192.81.133.103
+  IdentityFile ~/.ssh/cflabs.key
+
+Host 74.207.236.177
+  IdentityFile ~/.ssh/cflabs.key
+
+
+

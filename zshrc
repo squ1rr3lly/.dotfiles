@@ -2,6 +2,9 @@
 for function in ~/.zsh/functions/*; do
   source $function
 done
+for function in ~/.local/functions/*; do
+  source $function
+done
 
 # extra files in ~/.zsh/configs/pre , ~/.zsh/configs , and ~/.zsh/configs/post
 # these are loaded first, second, and third, respectively.
