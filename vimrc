@@ -17,6 +17,18 @@ set modelines=0   " Disable modelines as a security precaution
 set nomodeline
 set foldmethod=indent " Use indent level as fold level
 set mouse=a       " Enable mouse for scrolling and selecting tags (double-click)
+set autochdir     " Set working directory to current file
+
+
+""" CTags Config """
+set tags=./.tags,.tags; " Look for .tags in cwd, then up dirs until .tags is found
+
+" Need to figure out how I want to use this, but get the idea
+function CreateTags()
+    exec ':!ctags -R -f ./.tags'
+endfunction
+nmap <silent> <F4> :call CreateTags()<CR>
+
 
 " vim can autodetect this based on $TERM (e.g. 'xterm-256color')
 " but it can be set to force 256 colors
